@@ -2,15 +2,18 @@
 Routes and views for the flask application.
 """
 
+import sys
+sys.path.append("src")
+
 from datetime import datetime
 from sqlite3 import DatabaseError
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-from src.view_web import app
-from src.model.Calculations import MortgageLifetimeInverse, MortgageTemporaryReverse,MortgageSingleReverse
+from view_web import app
+from model.Calculations import MortgageLifetimeInverse, MortgageTemporaryReverse,MortgageSingleReverse
 from email import message
-from src.controller.database_manager import DatabaseManager
-from src.controller.model_user import Usuario
-from src.controller.model_reverse_mortage import model_reverse
+from controller.database_manager import DatabaseManager
+from controller.model_user import Usuario
+from controller.model_reverse_mortage import model_reverse
 
 db = DatabaseManager()
 

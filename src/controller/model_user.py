@@ -1,17 +1,33 @@
-
-
 import sys
+import configparser
+import os
 sys.path.append("src")
 
-from database_manager import DatabaseManager
-
+from controller.database_manager import DatabaseManager
 import psycopg2
-from controller import Secret
 
+# Leer archivo de configuración
+config_file = os.path.join(os.path.dirname(__file__), 'config.cfg')  # Ruta del archivo config.cfg
+config = configparser.ConfigParser()
+config.read(config_file)
 
-db = DatabaseManager()
+# Imprimir el contenido de config para verificar si se leyó correctamente
+print(config)
+
+# Obtener la configuración de la base de datos
+try:
+    PGHOST = config['database']['PGHOST']
+    PGDATABASE = config['database']['PGDATABASE']
+    PGUSER = config['database']['PGUSER']
+    PGPASSWORD = config['database']['PGPASSWORD']
+except KeyError as e:
+    print(f"Error: La sección 'database' o alguna de sus claves no se encontró en el archivo de configuración: {e}")
+
+# Crear una instancia de DatabaseManager con la configuración
+db = DatabaseManager(host=PGHOST, database=PGDATABASE, user=PGUSER, password=PGPASSWORD)
 
 class Usuario:
+  
     @classmethod
     def create(cls, table, data):
         try:
