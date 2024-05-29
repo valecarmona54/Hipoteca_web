@@ -1,0 +1,125 @@
+{% extends "layout_login.html" %}
+
+{% block content %}
+<div class="main-container">
+    <div class="register-container">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='content/register.css') }}" />
+        <h2>{{ title }}</h2>
+        {% if message %}
+        <div class="message-box">
+            <h3>{{ message }}</h3>
+        </div>
+        {% endif %}
+
+        <h3>Hipoteca Inversa Vitalicia</h3>
+        <div class="calculos-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ID de Usuario</th>
+                        <th>Monto Total</th>
+                        <th>Interes</th>
+                        <th>Interes de Vivienda</th>
+                        <th>Edad</th>
+                        <th>Resultado</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for calculo in hipoteca_inversa_vitalicia %}
+                    <tr>
+                        <td>{{ calculo[0] }}</td>
+                        <td>{{ calculo[1] }}</td>
+                        <td>{{ calculo[2] }}</td>
+                        <td>{{ calculo[3] }}</td>
+                        <td>{{ calculo[4] }}</td>
+                        <td>{{ calculo[5] }}</td>
+                        <td>{{ calculo[6] }}</td>
+                        <td>
+                            <form action="{{ url_for('delete_calculo', id=calculo[0], table='mortgage_lifetime_inverse') }}" method="post" style="display:inline;">
+                                <button type="submit" class="delete-btn">
+                                    <img src="{{ url_for('static', filename='delete-icon.png') }}" alt="Eliminar" width="20" height="20">
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Hipoteca Inversa Temporal</h3>
+        <div class="calculos-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ID de Usuario</th>
+                        <th>Monto Total</th>
+                        <th>Interes</th>
+                        <th>Interes de Vivienda</th>
+                        <th>Cuotas</th>
+                        <th>Resultado</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for calculo in hipoteca_inversa_temporal %}
+                    <tr>
+                        <td>{{ calculo[0] }}</td>
+                        <td>{{ calculo[1] }}</td>
+                        <td>{{ calculo[2] }}</td>
+                        <td>{{ calculo[3] }}</td>
+                        <td>{{ calculo[4] }}</td>
+                        <td>{{ calculo[5] }}</td>
+                        <td>{{ calculo[6] }}</td>
+                        <td>
+                            <form action="{{ url_for('delete_calculo', id=calculo[0], table='mortgage_temporary_reverse') }}" method="post" style="display:inline;">
+                                <button type="submit" class="delete-btn">
+                                    <img src="{{ url_for('static', filename='delete-icon.png') }}" alt="Eliminar" width="20" height="20">
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Hipoteca Inversa Unica</h3>
+        <div class="calculos-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ID de Usuario</th>
+                        <th>Monto Total</th>
+                        <th>Interes de Vivienda</th>
+                        <th>Resultado</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for calculo in hipoteca_inversa_unica %}
+                    <tr>
+                        <td>{{ calculo[0] }}</td>
+                        <td>{{ calculo[1] }}</td>
+                        <td>{{ calculo[2] }}</td>
+                        <td>{{ calculo[3] }}</td>
+                        <td>{{ calculo[4] }}</td>
+                        <td>
+                            <form action="{{ url_for('delete_calculo', id=calculo[0], table='mortgage_single_reverse') }}" method="post" style="display:inline;">
+                                <button type="submit" class="delete-btn">
+                                    <img src="{{ url_for('static', filename='delete-icon.png') }}" alt="Eliminar" width="20" height="20">
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

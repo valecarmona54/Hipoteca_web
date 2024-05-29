@@ -1,0 +1,46 @@
+{% extends "layout_login.html" %}
+
+{% block content %}
+<div class="main-container">
+    <div class="update-container">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='content/register.css') }}" />
+        <h2>{{ title }}</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul class="flashes">
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('update_user') }}" method="POST" class="centered-form">
+            <div class="form-group">
+                <label for="contrasena">Contrasena</label>
+                <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su nueva contrasena" value="{{ user['contrasena'] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="edad">Edad</label>
+                <input type="number" id="edad" name="edad" placeholder="Ingrese su edad" value="{{ user['edad'] }}" required min="65" max="100">
+            </div>
+            <div class="form-group">
+                <label for="nombre_usuario">Nombre de Usuario</label>
+                <input type="text" id="nombre_usuario" name="nombre_usuario" placeholder="Ingrese su nombre de usuario" value="{{ user['nombre_usuario'] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="genero">Genero</label>
+                <select id="genero" name="genero" required>
+                    <option value="">Selecciona tu genero</option>
+                    <option value="M" {{ 'selected' if user['genero'] == 'M' else '' }}>Masculino</option>
+                    <option value="F" {{ 'selected' if user['genero'] == 'F' else '' }}>Femenino</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit">Actualizar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
