@@ -1,12 +1,18 @@
+
+
 from os import environ
+from flask import Flask
 import sys
 
 # Añadir el directorio src al path
 sys.path.append("src")
+from flask import template_rendered
+from view_web import views
 
 # Importar módulos necesarios
 from controller.database_manager import DatabaseManager
-from view_web import app
+
+app =Flask(__name__)
 
 if __name__ == '__main__':
     # Crear una instancia de DatabaseManager y crear tablas

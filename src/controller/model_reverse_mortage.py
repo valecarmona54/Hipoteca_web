@@ -1,7 +1,7 @@
 import sys
 sys.path.append("src")
 
-from database_manager import DatabaseManager
+from controller.database_manager import DatabaseManager
 
 
 db = DatabaseManager()

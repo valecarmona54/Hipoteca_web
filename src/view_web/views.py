@@ -4,17 +4,15 @@ Routes and views for the flask application.
 
 import sys
 sys.path.append("src")
-
 from datetime import datetime
 from sqlite3 import DatabaseError
-from flask import Flask, render_template, request, redirect, url_for, session, flash
-from view_web import app
+from flask import Flask, render_template, request, redirect, url_for, session, flash, Blueprint
 from model.Calculations import MortgageLifetimeInverse, MortgageTemporaryReverse,MortgageSingleReverse
 from email import message
 from controller.database_manager import DatabaseManager
 from controller.model_user import Usuario
 from controller.model_reverse_mortage import model_reverse
-
+app = Blueprint ("views", __name__, "templates")
 db = DatabaseManager()
 
 @app.route('/')
