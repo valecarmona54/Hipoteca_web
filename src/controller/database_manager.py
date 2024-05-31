@@ -17,12 +17,7 @@ class DatabaseManager:
         config = ConfigParser()
         config.read('secret.cfg')
 
-        """"
-        PGHOST='ep-rapid-fire-a56s2rby.us-east-2.aws.neon.tech'
-        PGDATABASE='hipoteca'
-        PGUSER='tarjeta_credito_owner'
-        PGPASSWORD='j0dkN8AgLCsn'
-        """
+  
         self.host = config.get('database', 'PGHOST')
         self.database = config.get('database', 'PGDATABASE')
         self.user = config.get('database', 'PGUSER')
