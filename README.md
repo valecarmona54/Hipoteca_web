@@ -151,6 +151,21 @@ python test.py
 
 Primero, clona o descarga el repositorio de GitHub y navega al directorio del proyecto:
 
+Configuracion Base de datos
+1.	Debes ingresar a la pagina Neon. Neon.Tech
+2.	Te registrar/logea, una vez registrado debes crear un proyecto, el titulo del proyecto a tu preferencia y el nombre de la base de datos puede porle: "Calculadora hipoteca" y le das es crear proyecto.
+3.	Una vez creado el proyecto y la base de datos te dirijes a la opcion Dashboard.
+4.	Desplegas el menu donde dice Connection string, alli seleccionas la opcion de Parameters only.
+5.	Copias todo lo que se encuentra en el campo de texto y te dirijes donde tienes el repositorio abierto.
+6.	En la carpeta del hipoteca_web una carpeta llamada secret.cfg
+7.	En este archivo debes pegar los parametros que copias en el Neon de tu base de datos.
+8.	Asegúrese de tener Flask y las dependencias necesarias instaladas, de no tenerla instalada con el comando pip instanll Flask, lo instalas.
+- En caso de error considera eliminar las comillas a las variables y dejarlas sin ellas
+- Si sigue teneindo errores por favor considere cambair en la linea 18 del archivo database_manager.py, a lo siguiente:
+
+        config.read(r'Ruta directa y completa hasta el archivo secret.cfg, incluyendolo')
+
+
 ## 2. Crear y activar un entorno virtual(Para Windows)
 
 
